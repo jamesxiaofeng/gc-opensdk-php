@@ -1,0 +1,30 @@
+{
+    "name": "haiyin/gc-opensdk-php",
+    "description": "谷仓开放平台-客户端PHPSDK.",
+    "keywords": [
+        "gc-opensdk-php"
+    ],
+    "homepage": "https://github.com/jamesxiaofeng/gc-opensdk-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "阿狸酱",
+            "email": "736557686@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "haiyin\\gc-opensdk-php\\": "haiyin/core/"
+        },
+        "files": ["src/const.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "haiyin\\gc-opensdk-php\\": "haiyin/core/"
+        }
+    },
+    "require": {
+        "php":">=5.3",
+        "ext-curl": "*"
+    }
+}
