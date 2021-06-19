@@ -15,12 +15,6 @@
     "autoload": {
         "psr-4": {
             "haiyin\\gc-opensdk-php\\": "haiyin/core/"
-        },
-        "files": ["src/const.php"]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "haiyin\\gc-opensdk-php\\": "haiyin/core/"
         }
     },
     "require": {
