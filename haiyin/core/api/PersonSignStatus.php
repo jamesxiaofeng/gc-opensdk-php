@@ -4,7 +4,7 @@ namespace haiyin\core\api;
 use haiyin\core\impl\ApiInterface;
 
 //签约+认证状态查询
-class PersonStatus extends ApiInterface
+class PersonSignStatus extends ApiInterface
 {
     protected $levyCompanyNo;
     protected $employCompanyNo;

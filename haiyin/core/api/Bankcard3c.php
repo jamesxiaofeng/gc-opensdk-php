@@ -12,7 +12,7 @@ class Bankcard3c extends ApiInterface
 
     public function api()
     {
-        return self::BASE_URL . "/open-api/v2/common/bankcard/3c";
+        return self::BASE_URL . "/open-api/v2/standard/common/bankcard/3c";
     }
 
     /**

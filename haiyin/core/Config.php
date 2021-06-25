@@ -42,11 +42,6 @@ class Config extends ConfigInterface {
         return self::VERSION;
     }
 
-    public function getEcryptFlag()
-    {
-        return $this->_encrypt_flag;
-    }
-
     public function getSelfPrivateKey()
     {
         return $this->_self_priv_key;
@@ -84,15 +79,6 @@ class Config extends ConfigInterface {
     public function setSelfPrivatekey($priKey)
     {
         $this->_self_priv_key = $priKey;
-        return $this;
-    }
-
-    /**
-     * @param bool $encryptFlag "true: 返回数据会加密 false:返回数据不加密,取决于自己业务对安全性的要求"
-     */
-    public function setEncryptFlag($encryptFlag)
-    {
-        $this->_encrypt_flag = $encryptFlag ? 'true' : 'false';
         return $this;
     }
 }

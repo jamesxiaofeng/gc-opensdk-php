@@ -7,12 +7,12 @@ use haiyin\core\impl\ApiInterface;
 class FileUpload extends ApiInterface
 {
     protected $fileContent; //文件的base64
-    protected $fileType; // 业务类型 1:身份证照片 2:签字图片
+    protected $fileType; // 业务类型 1:身份证正面照片 2:身份证反面照片 3:签字图片
     
 
     public function api()
     {
-        return self::BASE_URL . "/open-api/v2/common/file/upload";
+        return self::BASE_URL . "/open-api/v2/standard/common/file/upload";
     }
 
     /**

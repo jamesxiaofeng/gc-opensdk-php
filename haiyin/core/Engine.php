@@ -61,7 +61,7 @@ class Engine
 		$params = $api->request();
 		$encryptMsg = self::encryptMsg($params, $config->getAesKey()); //生成encryptMsg
 		$encryptKey = self::encryptKey($config->getAesKey(), $config->getGcPubKey());
-		$sign = self::sign($params, $config->getGcPubKey());
+		$sign = self::sign($encryptMsg, $config->getGcPubKey());
 		$body = [
 			"encryptMsg" => $encryptMsg,
 			"encryptKey" => $encryptKey,
@@ -76,7 +76,6 @@ class Engine
 			"x-cp-timestamp" .":". $timestamp,
 			"x-cp-seqid" .":". $seqID,
 			"x-cp-version" .":". $config->getVersion(),
-			"x-cp-encrypt-flag" .":". $config->getEcryptFlag(),
 			"x-cp-encrypt" .":". $config->getCryptType(),
 		];
 
@@ -93,8 +92,8 @@ class Engine
 		return base64_encode(Rsa::encrypt($aesKey, $gcPublicKey));
 	}
 
-	protected static function sign($data, $gcPublicKey)
+	protected static function sign($encryptMsg, $gcPublicKey)
 	{
-		return base64_encode(Rsa::encrypt(md5(json_encode($data)), $gcPublicKey));
+		return base64_encode(Rsa::encrypt(md5($encryptMsg), $gcPublicKey));
 	}
 }

@@ -13,7 +13,6 @@ abstract class ConfigInterface
 	public abstract function getAesKey();
 	public abstract function getCryptType();
 	public abstract function getVersion();
-	public abstract function getEcryptFlag();
 	public abstract function getGcPubKey();
 	public abstract function getSelfPrivateKey();
 

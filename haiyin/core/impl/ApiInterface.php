@@ -233,18 +233,13 @@ abstract class ApiInterface
 	 */
     public function response($resp, $config) 
     {
-        //判断返回数据是否合法json
-        $data = json_decode($resp, true);
-        if (json_last_error() != JSON_ERROR_NONE) {
-            //服务端对返回结果进行了加密
-            if ($config->getEcryptFlag() === "true") {
-                $body = json_decode(base64_decode($resp), true);
-                $aesKey = Rsa::decrypt($body["encryptKey"], $config->getSelfPrivateKey());
-                $data = json_decode(Aes::decrypt($body["encryptMsg"], $aesKey), true);
-            } else {
-                throw new \Exception("haiyin unknow error:".$resp);
-            }
+        $json = json_decode($resp, true);
+        //服务端对返回结果进行了加密
+        if (!empty($json["data"])) {
+            $body = json_decode(base64_decode($json["data"]), true);
+            $aesKey = Rsa::decrypt($body["encryptKey"], $config->getSelfPrivateKey());
+            $json["data"] = json_decode(Aes::decrypt($body["encryptMsg"], $aesKey), true);
         }
-        return $data;
+        return $json;
     }
 }

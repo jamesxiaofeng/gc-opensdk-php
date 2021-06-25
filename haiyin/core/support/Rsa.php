@@ -14,6 +14,7 @@ class Rsa
     public static function decrypt($data, $priKey)
     {
         $decrypted = "";
+        $priKey = "-----BEGIN RSA PRIVATE KEY-----\n" . wordwrap($priKey, 64, "\n", true) . "\n-----END RSA PRIVATE KEY-----";
         openssl_private_decrypt(base64_decode($data), $decrypted, $priKey);//私钥解密  
         return $decrypted;
     }
